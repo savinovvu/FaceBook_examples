@@ -1,0 +1,42 @@
+import com.sun.org.apache.xalan.internal.xsltc.cmdline.Compile
+
+group 'ru.inbox.savinov_vu'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'application'
+
+sourceCompatibility = 1.8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+mainClassName = 'ru.inbox.savinov_vu.main.Main'
+
+tasks.withType(Compile) {
+    options.encoding = 'UTF-8'
+}
+
+compileJava.options.encoding = 'UTF-8'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'com.restfb:restfb:1.39.0'
+    def selenium = '3.3.0'
+    def excludeSelenium= "org.seleniumhq.selenium:selenium-java"
+    compile "io.github.bonigarcia:webdrivermanager:1.6.2"// , excludeSelenium
+
+    compile "org.seleniumhq.selenium:selenium-java:${selenium}"
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+jar {
+    manifest.attributes("Main-class": mainClassName)
+}
+
+
+run {
+    standardInput = System.in
+}
