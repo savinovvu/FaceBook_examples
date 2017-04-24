@@ -1,25 +1,22 @@
 package ru.inbox.savinov_vu.main;
 
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
+import com.restfb.DefaultFacebookClient;
+import com.restfb.FacebookClient;
+import com.restfb.Version;
+import com.restfb.types.User;
 
-import java.io.IOException;
+import java.util.ResourceBundle;
 
-public class Main extends Application {
+public class Main {
 
     public static void main(String[] args) {
-        launch(args);
-    }
+   String accessToken = "EAATZC6PZA3CgoBAOG66cJdtzZADHgT7rF0OWZCGHgAUAXEUlb6MD2prTftvQk4wzOKO5ZAVJI3ZAs42PAxtaaKNfZCJw8t4mwUg3tV0xsgN8ZCHdKP4WrEnrugyqji7jkigYqnmOZCEIDYZApG66Tr9aY1IKelf0U6JZB4ZD";
+        FacebookClient fbclient = new DefaultFacebookClient(accessToken, Version.LATEST);
 
-    @Override
-    public void start(Stage primaryStage) throws IOException {
-        Parent panel = FXMLLoader.load(getClass().getResource("/fxml/main.fxml"));
-        Scene scene = new Scene(panel);
-        primaryStage.setTitle("Welcome");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        FacebookClient.AccessToken at = fbclient.obtainExtendedAccessToken("1407275939334666", ResourceBundle.getBundle("config").getString("secret"));
+        User me = fbclient.fetchObject("me", User.class);
+        System.out.println(me.getName());
+        System.out.println(at.getAccessToken());
+        System.out.println(at.getExpires());
     }
 }
