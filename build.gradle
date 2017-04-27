@@ -23,11 +23,8 @@ repositories {
 }
 
 dependencies {
-
-    def selenium = '3.3.0'
-
     compile "io.github.bonigarcia:webdrivermanager:1.6.2"
-
+    def selenium = '3.3.0'
     compile "org.seleniumhq.selenium:selenium-java:${selenium}"
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
