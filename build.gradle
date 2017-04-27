@@ -23,7 +23,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.restfb:restfb:1.39.0'
+
     def selenium = '3.3.0'
 
     compile "io.github.bonigarcia:webdrivermanager:1.6.2"

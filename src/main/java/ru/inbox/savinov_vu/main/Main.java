@@ -9,19 +9,14 @@ public class Main {
     public static void main(String[] args) throws InterruptedException {
         String authUrl = "https://www.facebook.com/?sk=h_chr";
         ChromeDriverManager.getInstance().setup();
-
         WebDriver driver = new ChromeDriver();
         driver.get(authUrl);
-        while (true) {
 
+        while (true) {
             if (driver.getCurrentUrl().contains("sk=h_nor")) {
                 driver.get(authUrl);
             }
             Thread.currentThread().sleep(1000);
-
         }
-
-
-
     }
 }
