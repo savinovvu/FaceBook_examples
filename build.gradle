@@ -25,8 +25,8 @@ repositories {
 dependencies {
     compile 'com.restfb:restfb:1.39.0'
     def selenium = '3.3.0'
-    def excludeSelenium= "org.seleniumhq.selenium:selenium-java"
-    compile "io.github.bonigarcia:webdrivermanager:1.6.2"// , excludeSelenium
+
+    compile "io.github.bonigarcia:webdrivermanager:1.6.2"
 
     compile "org.seleniumhq.selenium:selenium-java:${selenium}"
     testCompile group: 'junit', name: 'junit', version: '4.12'
