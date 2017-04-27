@@ -6,7 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         String authUrl = "https://www.facebook.com/?sk=h_chr";
         ChromeDriverManager.getInstance().setup();
 
@@ -17,6 +17,8 @@ public class Main {
             if (driver.getCurrentUrl().contains("sk=h_nor")) {
                 driver.get(authUrl);
             }
+            Thread.currentThread().sleep(1000);
+
         }
 
 
